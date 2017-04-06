@@ -5,7 +5,8 @@
 <style>
 canvas {
     border:5px solid #afbacc;
-    background-color: #7df257;
+
+	background:url(./Images/skybackground.png)
 }
 </style>
 </head>
@@ -57,10 +58,11 @@ function component(width, height, color, x, y, type) {
             ctx.fillText(this.text, this.x, this.y);
 		}if(this.type == "img") {
 		    var img= new Image();
-			img.onload = function () {
-    			ctx.drawImage(img, this.width, this.height, this.x, this.y);
-			}
 			img.src = "plane.png"
+			img.onload = function () {
+    			ctx.drawImage(img, this.x, this.y, this.width, this.height);
+			}
+
         } else {
             ctx.fillStyle = color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
